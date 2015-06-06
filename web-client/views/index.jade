@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    
+  div#nickWrap
+        p Enter a username:
+        p#nickError
+        form#setNick
+            input#nickname(size="35")
+            input(type="submit")
+    
+    div#contentWrap
+        div#chatWrap
+            div#chat
+            form#send-message
+                input#message(size="35")
+                input(type="submit")
+        div#users
+
+  script(type="text/javascript", src='https://cdn.socket.io/socket.io-1.3.5.js')
+  script(type="text/javascript", src="http://code.jquery.com/jquery-latest.min.js")
+  script(type="text/javascript", src='/javascripts/web-client.js')
+  
