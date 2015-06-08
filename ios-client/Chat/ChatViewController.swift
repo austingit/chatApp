@@ -100,7 +100,8 @@ class ChatViewController: UIViewController {
     @IBAction func sendMessage(sender: AnyObject) {
         if (!msgTxtBox.text.isEmpty) {
             self.socket.emitWithAck("send message", msgTxtBox.text) (timeout: 0) { data in
-                if (data![0] as Int == 0) {
+                //println(data)
+                if (data![0] as String != "") {
                     var msg = data![0] as? NSString
                     var chatText = self.chatWindow.text
                     self.chatWindow.text = chatText! + "ERROR: " + msg! + "\n"
