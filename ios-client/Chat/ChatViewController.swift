@@ -85,6 +85,16 @@ class ChatViewController: UIViewController {
 
         }
         
+        // receive whispers
+        self.socket.on("whisper") { [weak self] data, ack in
+            
+            var nick = data![0]["nick"] as? NSString
+            var msg = data![0]["msg"] as? NSString
+            var chatText = self?.chatWindow.text
+            self?.chatWindow.text = chatText! + nick! + "[whisper]: " + msg! + "\n"
+        
+        }
+        
     }
 
     @IBAction func sendMessage(sender: AnyObject) {
